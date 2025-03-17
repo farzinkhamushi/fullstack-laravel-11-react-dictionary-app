@@ -20,6 +20,7 @@ class AdminController extends Controller
 {
     public function index()
     {
+        Log::info('index function triggered');
         $definitions = Definition::all();
         $words = Word::all();
         $synonyms = Synonym::all();
@@ -40,7 +41,9 @@ class AdminController extends Controller
             return redirect()->route('admin.index');
             Log::info('login function triggeredadmin guard checked true and redirected to admin.index');
         }
+        Log::info('before view admin.login triggered');
         return view('admin.login');
+        Log::info('after view admin.login triggered');
     }
     public function auth(AuthAdminRequest $request){
         Log::info('auth function triggered');
