@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('definitions', function (Blueprint $table) {
             $table->id();
+            $table->longText('maening');
+            $table->string('part_of_speech');
+            $table->longText('example_sentence');
             $table->timestamps();
         });
     }
