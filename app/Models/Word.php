@@ -17,5 +17,8 @@ class Word extends Model
     {
         return $this->hasMany(Synonym::class);
     }
-    
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
