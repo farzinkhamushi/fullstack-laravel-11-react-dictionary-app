@@ -33,13 +33,16 @@ class AdminController extends Controller
         ]);
     }
     public function login(){
+        Log::info('login function triggered');
         if(auth()->guard('admin')->check()){
+            Log::info('login function triggered admin guard checked true');
             return redirect()->route('admin.index');
+            Log::info('login function triggeredadmin guard checked true and redirected to admin.index');
         }
         return view('admin.login');
     }
     public function auth(AuthAdminRequest $request){
-        Log::info('این یک پیام تست است');
+        Log::info('auth function triggered');
         /*
         if($request->validated()){
             if(auth()->guard('admin')->attempt([
