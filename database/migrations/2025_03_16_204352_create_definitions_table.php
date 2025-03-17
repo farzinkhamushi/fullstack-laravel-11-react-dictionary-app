@@ -16,6 +16,7 @@ return new class extends Migration
             $table->longText('maening');
             $table->string('part_of_speech');
             $table->longText('example_sentence');
+            $table->foreignId('word_id')->constrained('words')->cascadeOnDelete();
             $table->timestamps();
         });
     }
