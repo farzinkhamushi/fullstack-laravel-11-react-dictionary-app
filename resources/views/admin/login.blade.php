@@ -18,9 +18,10 @@
                         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
                         <div class="form-floating mb-3">
                             <input type="email" name="email" 
-                                class="form-control" 
-                                id="floatingInput @error('email') is-invalid @enderror" 
-                                placeholder="name@example.com">
+                                class="form-control @error('email') is-invalid @enderror" 
+                                id="floatingInput" 
+                                placeholder="name@example.com"
+                                value="{{ old('email') }}">
                             <label for="floatingInput">Email address</label>
                             @error('email')
                                 <div class="invalid-feedback">
@@ -33,7 +34,8 @@
                         <div class="form-floating mb-3">
                             <input type="password" name="password" 
                                 class="form-control @error('password') is-invalid @enderror"
-                                id="floatingPassword" placeholder="Password">
+                                id="floatingPassword" placeholder="Password"
+                                value="{{ old('password') }}">
                             <label for="floatingPassword">Password</label>
                             @error('password')
                                 <div class="invalid-feedback">
