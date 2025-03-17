@@ -45,24 +45,26 @@ class AdminController extends Controller
         return view('admin.login');
         Log::info('after view admin.login triggered');
     }
-    public function auth(AuthAdminRequest $request){
-        Log::info('auth function triggered');
-        /*
+    public function auth1(AuthAdminRequest $request){
+        Log::info('auth1 function triggered');
         if($request->validated()){
+            Log::info('auth1 function triggered validated');
             if(auth()->guard('admin')->attempt([
                 'email' => $request->email,
                 'password' => $request->password,
             ])){
+                Log::info('auth1 function triggered attempt true');
                 $request->session()->regenerate();
                 return redirect()->route('admin.index');
             }else{
+                Log::info('auth1 function triggered attempt false');
                 throw ValidationException::withMessages([
                     'email' => 'These credentials do not match our records.',
                     //'email' => trans('auth.failed'),
                 ]);
             }
         }
-        */
+        return redirect()->back();
     }
     public function logout(){
         auth()->guard('admin')->logout();
