@@ -31,10 +31,23 @@ class Subscription extends Model
         return $this->hasMany(Word::class);
     }
 
+    protected function casts():array
+    {
+        return [
+            'current_period_start' => 'datetime',
+            'current_period_end' => 'datetime',
+        ];
+    }
+
     /*
     public function definitions()
     {
         return $this->hasMany(Definition::class);
     }
     */
+
+    public function getCurrentPeriodStartAttribute($value)
+    {
+        return $value ? Carbon::parse($value) : null;
+    }
 }
