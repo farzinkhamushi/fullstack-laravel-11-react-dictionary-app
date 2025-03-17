@@ -44,17 +44,19 @@ class AdminController extends Controller
     }
     
     public function auth(AuthAdminRequest $request){
-        if(auth()->guard('admin')->attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ])){
-            $request->session()->regenerate();
-            return redirect()->route('admin.index');
-        }else{
-            throw ValidationException::withMessages([
-                'email' => 'These credentials do not match our records.',
-                //'email' => trans('auth.failed'),
-            ]);
+        if($request->validated()){
+            if(auth()->guard('admin')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+            ])){
+                $request->session()->regenerate();
+                return redirect()->route('admin.index');
+            }else{
+                throw ValidationException::withMessages([
+                    'email' => 'These credentials do not match our records.',
+                    //'email' => trans('auth.failed'),
+                ]);
+            }
         }
     }
 
@@ -62,6 +64,5 @@ class AdminController extends Controller
         auth()->guard('admin')->logout();
         return redirect()->route('admin.login');
     }
-
 
 }
