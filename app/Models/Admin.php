@@ -44,4 +44,6 @@ class Admin extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    protected $guard = 'admin';
 }
