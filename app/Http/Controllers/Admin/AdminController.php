@@ -29,7 +29,7 @@ class AdminController extends Controller
 
         return view('admin.dashboard')->with([
             'definitions' => $definitions,
-            'word' => $words,
+            'words' => $words,
             'synonyms' => $synonyms,
             'plans' => $plans,
             'subscriptions' => $subscriptions,
@@ -53,7 +53,7 @@ class AdminController extends Controller
         }else{
             throw ValidationException::withMessages([
                 'email' => 'These credentials do not match our records.',
-                // 'password' => trans('auth.failed'),
+                //'email' => trans('auth.failed'),
             ]);
         }
     }
