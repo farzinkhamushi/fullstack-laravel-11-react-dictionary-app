@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('number_of_hearts');
+            $table->integer('price');
             $table->timestamps();
         });
     }
