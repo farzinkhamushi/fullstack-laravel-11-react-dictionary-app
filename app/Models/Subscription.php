@@ -48,6 +48,10 @@ class Subscription extends Model
 
     public function getCurrentPeriodStartAttribute($value)
     {
-        return $value ? Carbon::parse($value) : null;
+        //much more safer to use $value ? Carbon::parse($value)->format('Y-m-d h:i:s'):null;
+        //return $value ? Carbon::parse($value)->format('Y-m-d h:i:s') : null;
+        return Carbon::parse($value)->format('Y-m-d h:i:s');
     }
+
+    public function getCurrentPeriodEndAttribute($value)
 }
