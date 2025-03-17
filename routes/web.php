@@ -5,7 +5,8 @@ use App\Http\Controllers\Admin\AdminController;
 
 
 Route::get('/', [AdminController::class,'login'])->name('admin.login');
-Route::post('/admin/auth', [AdminController::class,'auth1'])->name('admin.auth');
+Route::post('/admin/auth', [AdminController::class,'auth'])->name('admin.auth');
+Route::get('/admin/auth', [AdminController::class,'auth'])->name('admin.auth');
 
 //Route::prefix('admin')->middleware('auth:admin')->group(function(){
 Route::prefix('admin')->middleware('admin')->group(function(){
