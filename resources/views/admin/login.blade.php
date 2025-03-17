@@ -21,7 +21,9 @@
                             <label for="floatingInput">Email address</label>
                             @error('email')
                                 <div class="invalid-feedback">
-                                    {{ $message }}
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
                                 </div>
                             @enderror
                         </div>
