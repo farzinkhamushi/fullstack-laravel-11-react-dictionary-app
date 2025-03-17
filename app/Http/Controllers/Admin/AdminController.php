@@ -1,4 +1,4 @@
-66<?php
+<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -9,20 +9,27 @@ use App\Models\Word;
 use App\Models\Synonym;
 use App\Models\Plan;
 use App\Models\Subscription;
+use App\Http\Requests\AuthAdminRequest;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
     public function index()
     {
         $definitions = Definition::all();
-        $word = Word::all();
+        $words = Word::all();
         $synonyms = Synonym::all();
         $plans = Plan::all();
         $subscriptions = Subscription::all();
 
         return view('admin.dashboard')->with([
             'definitions' => $definitions,
-            'word' => $word,
+            'word' => $words,
             'synonyms' => $synonyms,
             'plans' => $plans,
             'subscriptions' => $subscriptions,
@@ -46,6 +53,7 @@ class AdminController extends Controller
         }else{
             throw ValidationException::withMessages([
                 'email' => 'These credentials do not match our records.',
+                // 'password' => trans('auth.failed'),
             ]);
         }
     }
