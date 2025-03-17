@@ -15,7 +15,6 @@ class UserFactory extends Factory
      * The current password being used by the factory.
      */
     protected static ?string $password;
-
     /**
      * Define the model's default state.
      *
@@ -31,7 +30,6 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-
     /**
      * Indicate that the model's email address should be unverified.
      */
