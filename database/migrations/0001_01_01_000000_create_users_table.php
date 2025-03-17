@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('stripe_id')->nullable()->unique();
-            $table->string('password');
+            $table->string('number_of_hearts')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
