@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Definition;
@@ -26,7 +24,6 @@ class AdminController extends Controller
         $synonyms = Synonym::all();
         $plans = Plan::all();
         $subscriptions = Subscription::all();
-
         return view('admin.dashboard')->with([
             'definitions' => $definitions,
             'words' => $words,
@@ -35,15 +32,15 @@ class AdminController extends Controller
             'subscriptions' => $subscriptions,
         ]);
     }
-
     public function login(){
         if(auth()->guard('admin')->check()){
             return redirect()->route('admin.index');
         }
         return view('admin.login');
     }
-    
     public function auth(AuthAdminRequest $request){
+        Log::info('این یک پیام تست است');
+        /*
         if($request->validated()){
             if(auth()->guard('admin')->attempt([
                 'email' => $request->email,
@@ -58,11 +55,10 @@ class AdminController extends Controller
                 ]);
             }
         }
+        */
     }
-
     public function logout(){
         auth()->guard('admin')->logout();
         return redirect()->route('admin.login');
     }
-
 }
