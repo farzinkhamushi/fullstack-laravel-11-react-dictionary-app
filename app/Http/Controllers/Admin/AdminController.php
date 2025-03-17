@@ -9,7 +9,11 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $definition = Definition::all();
+        $synonym = Synonym::all();
+        $antonym = Antonym::all();
+        $word = Word::all();
+        return view('admin.index', compact('definition', 'synonym', 'antonym', 'word'));
     }
-    
+
 }
